@@ -41,7 +41,7 @@ LPH_JIT_MAX(function()
         end
 
         if connection_count < 4 then
-            cloneref(game:GetService("Players"))["LocalPlayer"]:Kick("[juju]\nda hood has updated, please wait for juju to update.")
+            cloneref(game:GetService("Players"))["LocalPlayer"]
             task["wait"](9e9) -- << idk if this will yield in luraph ?
             return
         end
