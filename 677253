@@ -55,38 +55,6 @@ local flags = {
     ["skins"] = {}
 }
 
--- > ( global cheat functions )
-
-local create_connection = LPH_NO_VIRTUALIZE(function(signal, callback)
-    local connection = signal:Connect(callback)
-    connections[#connections + 1] = connection
-
-    return connection
-end)
-
-local create_instance = LPH_NO_VIRTUALIZE(function(class, properties)
-    local instance = Instance["new"](class)
-
-    for property, value in properties do
-        instance[property] = value
-    end
-
-    return instance
-end)
-
-local round = LPH_NO_VIRTUALIZE(function(num, decimals)
-    local mult = 10^(decimals or 0)
-    return floor(num * mult + 0.5 - (num < 0 and 1 or 0)) / mult
-end)
-
-local remove = LPH_NO_VIRTUALIZE(function(tbl, index)
-    local length = #tbl
-    for i = index, length - 1 do
-        tbl[i] = tbl[i + 1]
-    end
-    tbl[length] = nil
-end)
-
 -- > ( signal library )
 
 local signal = {}
