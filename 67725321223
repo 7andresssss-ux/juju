@@ -10336,9 +10336,6 @@ do
                     2
                 )
             end
-            if do_kick then
-                delay(0, getgenv()["_JUJU"])
-            end
         end
     end
 
