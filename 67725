@@ -1,18 +1,4 @@
-if game then repeat task["wait"]() until game:IsLoaded() end
 
-if (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
-    cleardrawcache()
-end
-
--- > ( luraph variables )
-
-if not LPH_OBFUSCATED then
-    LPH_JIT_MAX = function(...) return ... end
-    LPH_NO_VIRTUALIZE = function(...) return ... end
-    LPH_ENCSTR = function(...) return ... end
-    LPH_NO_UPVALUES = function(...) return ... end
-    LPH_JIT = function(...) return ... end
-end
 
 getgenv()["juju"] = {}
 
