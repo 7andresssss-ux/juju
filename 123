@@ -148,7 +148,13 @@ do
     function signal:Fire(...)
         local callbacks = self["callbacks"]
         for i = 1, #callbacks do
-            spawn(callbacks[i], ...)
+            local cb = callbacks[i]
+            spawn(function(...)
+                local ok, err = pcall(cb, ...)
+                if not ok then
+                    warn("signal:Fire callback error:", err)
+                end
+            end, ...)
         end
     end
 
@@ -294,7 +300,6 @@ do
                 ["primordial.ogg"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/primordial.ogg") end,
                 ["rust.ogg"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/rust.ogg") end,
                 ["sexy.ogg"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/sexy.ogg") end,
-                ["jaydes.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/jaydes.png") end,
                 ["1.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/1.png") end,
                 ["2.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/2.png") end,
                 ["logo.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/logo.png") end,
